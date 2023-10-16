@@ -1,0 +1,19 @@
+<mat-drawer-container [hasBackdrop]="true" autosize>
+  <mat-drawer #drawer mode="over" style="background-color: #7878ff">
+    <p>Мaaaaaaaa</p>
+  </mat-drawer>
+
+  <mat-drawer-content [class.darken-content]="drawer.opened">
+    <div>
+      <button mat-icon-button color="primary" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-heat-result></app-heat-result>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+
+
