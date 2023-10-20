@@ -1,15 +1,31 @@
 <mat-drawer-container [hasBackdrop]="true" autosize>
-  <mat-drawer #drawer mode="over" style="background-color: #7878ff">
+  <mat-drawer #drawer mode="over">
     <p>Мaaaaaaaa</p>
   </mat-drawer>
 
-  <mat-drawer-content [class.darken-content]="drawer.opened">
-    <div>
-      <button mat-icon-button color="primary" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
+
+  <mat-drawer-content style="font-size: xx-large">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Табло</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          1-й заплыв
+        </mat-card-title>
+        <mat-card-subtitle>
+          50 м - Брасс - Мужчины
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
       <app-heat-result></app-heat-result>
-    </div>
+      </mat-card-content>
+    </mat-card>
   </mat-drawer-content>
 
 </mat-drawer-container>

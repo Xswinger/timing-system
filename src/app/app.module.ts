@@ -10,11 +10,12 @@ import { MenuComponent } from './menu/menu.component'
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card'
+import {MatToolbarModule} from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeatResultComponent, MenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,11 +24,13 @@ import {MatButtonModule} from '@angular/material/button'
     MatTableModule,
     MatSidenavModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MenuComponent
   ],
   providers: [],
   exports: [
-    HeatResultComponent, MenuComponent
   ],
   bootstrap: [AppComponent]
 })

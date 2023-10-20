@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {HeatResult} from './heat-result'
+import {MatTableModule} from '@angular/material/table'
 
 @Component({
   selector: 'app-heat-result',
   templateUrl: './heat-result.component.html',
-  styleUrls: ['./heat-result.component.css']
+  styleUrls: ['./heat-result.component.css'],
+  standalone: true,
+  imports: [
+    MatTableModule
+  ]
 })
 export class HeatResultComponent implements OnInit {
 
