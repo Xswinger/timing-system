@@ -12,6 +12,14 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
+import {RouterModule, Routes} from '@angular/router';
+import { SettingsComponent } from './content/settings/settings.component'
+import {MatListModule} from '@angular/material/list'
+
+const appRoutes: Routes = [
+  {path: 'scoreboard', component: HeatResultComponent},
+  {path: 'settings', component: SettingsComponent}
+];
 
 @NgModule({
   declarations: [
@@ -27,7 +35,9 @@ import {MatToolbarModule} from '@angular/material/toolbar'
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MenuComponent
+    MenuComponent,
+    RouterModule.forRoot(appRoutes),
+    MatListModule
   ],
   providers: [],
   exports: [

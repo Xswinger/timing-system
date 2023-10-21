@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HeatResult} from './heat-result'
 import {MatTableModule} from '@angular/material/table'
+import {MatCardModule} from '@angular/material/card'
 
 @Component({
   selector: 'app-heat-result',
@@ -8,7 +9,8 @@ import {MatTableModule} from '@angular/material/table'
   styleUrls: ['./heat-result.component.css'],
   standalone: true,
   imports: [
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class HeatResultComponent implements OnInit {
