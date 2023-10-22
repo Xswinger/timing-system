@@ -14,16 +14,31 @@ import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {RouterModule, Routes} from '@angular/router';
 import { SettingsComponent } from './content/settings/settings.component'
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { AuthorizationComponent } from './authorization/authorization.component'
+import {AuthorizationGuard} from './authorization/authorization.guard';
+import { MainSampleComponent } from './content/main-sample/main-sample.component'
 
 const appRoutes: Routes = [
-  {path: 'scoreboard', component: HeatResultComponent},
-  {path: 'settings', component: SettingsComponent}
+  {path: 'auth', component: AuthorizationComponent},
+  {
+    path: 'judge',
+    component: MainSampleComponent,
+    canActivate: [AuthorizationGuard],
+    canActivateChild: [AuthorizationGuard],
+    children: [
+      {path: 'scoreboard', component: HeatResultComponent},
+      {path: 'settings', component: SettingsComponent},
+      {path: '**', redirectTo: 'settings'}
+    ]},
+  {path: '**', redirectTo: 'auth'}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthorizationComponent,
+    MainSampleComponent
   ],
   imports: [
     BrowserModule,

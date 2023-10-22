@@ -1,0 +1,11 @@
+<div class="set-height center-content" style="background-color: deepskyblue">
+  <mat-card style="text-align: center">
+    <mat-card-title class="center-content">
+      Войти как:
+    </mat-card-title>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="">Секундант</button>
+      <button mat-raised-button color="warn" routerLink="/judge/settings" (click)="auth.setLoggedJudge()">Главный судья</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

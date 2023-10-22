@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
@@ -18,6 +18,7 @@ import {BrowserModule} from '@angular/platform-browser'
   imports: [MatButtonModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule, HeatResultComponent, MatListModule, RouterOutlet, RouterLinkWithHref, BrowserModule]
 })
 export class MenuComponent implements OnInit {
+  @Input() menuControl: any;
 
   constructor() { }
 
@@ -26,12 +27,16 @@ export class MenuComponent implements OnInit {
 
   menuItems: MenuRoutes[] = [{
       name: 'Настройки',
-      route: '/settings',
+      route: 'settings',
       icon: 'settings'
     }, {
       name: 'Табло',
-      route: '/scoreboard',
+      route: 'scoreboard',
       icon: 'format_list_numbered'
-    }
+    }, {
+      name: 'Выйти',
+      route: '../auth',
+      icon: 'exit_to_app'
+  }
   ]
 }
