@@ -16,21 +16,28 @@ import {RouterModule, Routes} from '@angular/router';
 import { SettingsComponent } from './content/settings/settings.component'
 import {MatListModule} from '@angular/material/list';
 import { AuthorizationComponent } from './authorization/authorization.component'
-import {AuthorizationGuard} from './authorization/authorization.guard';
-import { MainSampleComponent } from './content/main-sample/main-sample.component'
+import {JudgeAuthorizationGuard} from './authorization/guards/judge-authorization.guard';
+import { MainSampleComponent } from './content/main-sample/main-sample.component';
+import { StopwatchComponent } from './content/stopwatch/stopwatch.component'
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthorizationComponent},
   {
     path: 'judge',
     component: MainSampleComponent,
-    canActivate: [AuthorizationGuard],
-    canActivateChild: [AuthorizationGuard],
+    canActivate: [JudgeAuthorizationGuard],
+    canActivateChild: [JudgeAuthorizationGuard],
     children: [
       {path: 'scoreboard', component: HeatResultComponent},
       {path: 'settings', component: SettingsComponent},
       {path: '**', redirectTo: 'settings'}
     ]},
+  {
+    path: 'timekeeper',
+    component: StopwatchComponent,
+    canActivate: [JudgeAuthorizationGuard],
+    canActivateChild: [JudgeAuthorizationGuard],
+  },
   {path: '**', redirectTo: 'auth'}
 ];
 
@@ -38,7 +45,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AuthorizationComponent,
-    MainSampleComponent
+    MainSampleComponent,
+    StopwatchComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
       Войти как:
     </mat-card-title>
     <mat-card-actions>
-      <button mat-raised-button color="primary" routerLink="">Секундант</button>
+      <button mat-raised-button color="primary" routerLink="/timekeeper" (click)="auth.setLoggedTimekeeper()">Секундант</button>
       <button mat-raised-button color="warn" routerLink="/judge/settings" (click)="auth.setLoggedJudge()">Главный судья</button>
     </mat-card-actions>
   </mat-card>

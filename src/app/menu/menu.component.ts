@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
@@ -19,6 +19,11 @@ import {BrowserModule} from '@angular/platform-browser'
 })
 export class MenuComponent implements OnInit {
   @Input() menuControl: any;
+  @Output() onChangePage = new EventEmitter<any>();
+  change(title: string) {
+    this.menuControl.toggle();
+    this.onChangePage.emit(title);
+  }
 
   constructor() { }
 

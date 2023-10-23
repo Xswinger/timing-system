@@ -1,6 +1,6 @@
 <mat-drawer-container [hasBackdrop]="true" autosize style="height: 100%">
   <mat-drawer #drawer mode="over">
-    <app-menu [menuControl]="drawer"></app-menu>
+    <app-menu [menuControl]="drawer" (onChangePage)="changeTitle($event)"></app-menu>
   </mat-drawer>
 
   <mat-drawer-content style="font-size: xx-large">
@@ -9,9 +9,8 @@
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Табло</span>
+        <span>{{currentTitle}}</span>
         <span style="flex: 1 1 auto;"></span>
-<!--        <mat-icon style="width: 100px; height:100px" svgIcon="logo"></mat-icon>-->
       </mat-toolbar-row>
     </mat-toolbar>
     <router-outlet></router-outlet>
