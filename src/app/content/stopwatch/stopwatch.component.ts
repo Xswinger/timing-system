@@ -12,4 +12,12 @@ export class StopwatchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onPause() {
+
+  }
+
+  onReset() {
+
+  }
+
 }

@@ -1,0 +1,13 @@
+.set-sizes-panel {
+  min-width: 50vh;
+  min-height: 40vh;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-height {
+  height: 100vh;
+}

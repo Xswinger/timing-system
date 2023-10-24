@@ -1,1 +1,35 @@
-<p>stopwatch works!</p>
+<div class="set-height center-content set-sizes-panel" style="background-color: deepskyblue">
+  <mat-card style="text-align: center">
+    <mat-card-title class="center-content">
+      Дорожка №1
+    </mat-card-title>
+    <mat-card-content>
+      <section>
+        <div class="col timer">
+          <!-- <div class="digital">{{ getTimeString() }}</div> -->
+          <div>
+            <!--          {{ getTimeStringMinutes() }}-->
+            01
+            <span>:</span>
+            <!--          {{ getTimeStringSeconds() }}-->
+            01
+            <span>.</span>
+            01
+            <!--          {{ getTimeStringMilliseconds() }}-->
+          </div>
+        </div>
+        <div>
+          <section>
+            <button mat-raised-button (click)="onPause()" color="primary">Стоп</button>
+          </section>
+          <section>
+            <button mat-raised-button (click)="onReset()" color="accent">Сбросить</button>
+          </section>
+          <section>
+            <a mat-raised-button color="warn" href="../auth">Выйти</a>
+          </section>
+        </div>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</div>
