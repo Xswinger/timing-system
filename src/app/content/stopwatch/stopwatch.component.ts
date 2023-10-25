@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StopwatchComponent implements OnInit {
 
+  currentLane!: number;
+
   constructor() { }
 
   ngOnInit(): void {

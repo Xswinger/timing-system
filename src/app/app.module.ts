@@ -19,6 +19,9 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import {JudgeAuthorizationGuard} from './authorization/guards/judge-authorization.guard';
 import { MainSampleComponent } from './content/main-sample/main-sample.component';
 import { StopwatchComponent } from './content/stopwatch/stopwatch.component'
+import {MatInputModule} from '@angular/material/input'
+import {MatSelectModule} from '@angular/material/select'
+import {FormsModule} from '@angular/forms'
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthorizationComponent},
@@ -60,7 +63,10 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MenuComponent,
     RouterModule.forRoot(appRoutes),
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   exports: [
