@@ -2,58 +2,68 @@
   <mat-drawer #drawer mode="over">
     <mat-list role="list">
       <div mat-subheader>Номер дорожки</div>
-      <mat-form-field>
-        <mat-select [(ngModel)]="currentLane">
-          <mat-option [value]="1">
-            1
-          </mat-option>
-          <mat-option [value]="2">
-            2
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-list-item>
+        <mat-form-field>
+          <mat-select [(ngModel)]="currentLane">
+            <mat-option [value]="1">
+              1
+            </mat-option>
+            <mat-option [value]="2">
+              2
+            </mat-option>
+            <mat-option [value]="3">
+              3
+            </mat-option>
+            <mat-option [value]="4">
+              4
+            </mat-option>
+            <mat-option [value]="5">
+              5
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-list-item>
     </mat-list>
   </mat-drawer>
 
-  <mat-drawer-content style="font-size: xx-large">
+  <mat-drawer-content>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>settings</mat-icon>
         </button>
+        <span class="spacer"></span>
+        <a mat-button href="../auth" color="warn">
+          <mat-icon>exit_to_app</mat-icon>
+        </a>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div class="set-height center-content set-sizes-panel" style="background-color: deepskyblue">
+    <div class="set-height center-content">
       <mat-card style="text-align: center">
         <mat-card-title class="center-content">
           Дорожка № {{currentLane}}
         </mat-card-title>
+        <mat-error *ngIf="!currentLane">Укажите номер дорожки</mat-error>
         <mat-card-content>
           <section>
-            <div class="h1">
-              <!-- <div class="digital">{{ getTimeString() }}</div> -->
+            <div style="font-size: xxx-large; padding: 5vh; margin: 15vh 0 15vh 0">
               <div>
-                <!--          {{ getTimeStringMinutes() }}-->
-                01
+                {{getTimeStringMinutes()}}
                 <span>:</span>
-                <!--          {{ getTimeStringSeconds() }}-->
-                01
+                {{getTimeStringSeconds()}}
                 <span>.</span>
-                01
-                <!--          {{ getTimeStringMilliseconds() }}-->
+                {{getTimeStringMilliseconds()}}
               </div>
             </div>
-            <div>
-              <section>
-                <button mat-raised-button (click)="onPause()" color="primary">Стоп</button>
-              </section>
-              <section class="mt-2">
-                <button mat-raised-button (click)="onReset()" color="accent">Сбросить</button>
-              </section>
-              <section class="mt-2">
-                <a mat-raised-button color="warn" href="../auth">Выйти</a>
-              </section>
-            </div>
+            <mat-grid-list cols="2" rowHeight="1:1">
+              <mat-grid-tile colspan="1">
+                <button *ngIf="!stopwatchStart" class="button-size" mat-raised-button (click)="onStart()" color="primary">Старт</button>
+                <button *ngIf="stopwatchStart" class="button-size" mat-raised-button (click)="onPause()" color="primary">Пауза</button>
+              </mat-grid-tile>
+              <mat-grid-tile colspan="1">
+                <button class="button-size" mat-raised-button (click)="onReset()" color="warn">Сбросить</button>
+              </mat-grid-tile>
+            </mat-grid-list>
           </section>
         </mat-card-content>
       </mat-card>

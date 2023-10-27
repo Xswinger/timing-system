@@ -22,6 +22,7 @@ import { StopwatchComponent } from './content/stopwatch/stopwatch.component'
 import {MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import {FormsModule} from '@angular/forms'
+import {MatGridListModule} from '@angular/material/grid-list'
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthorizationComponent},
@@ -51,23 +52,24 @@ const appRoutes: Routes = [
     MainSampleComponent,
     StopwatchComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    MatTableModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
-    MenuComponent,
-    RouterModule.forRoot(appRoutes),
-    MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatTableModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        MenuComponent,
+        RouterModule.forRoot(appRoutes),
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        FormsModule,
+        MatGridListModule
+    ],
   providers: [],
   exports: [
   ],
