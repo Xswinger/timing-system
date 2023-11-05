@@ -21,8 +21,11 @@ import { MainSampleComponent } from './content/main-sample/main-sample.component
 import { StopwatchComponent } from './content/stopwatch/stopwatch.component'
 import {MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MatGridListModule} from '@angular/material/grid-list'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http'
+import {ApiContentService} from './api.content.service'
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthorizationComponent},
@@ -52,25 +55,28 @@ const appRoutes: Routes = [
     MainSampleComponent,
     StopwatchComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        NgbModule,
-        MatTableModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatToolbarModule,
-        MenuComponent,
-        RouterModule.forRoot(appRoutes),
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        FormsModule,
-        MatGridListModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MenuComponent,
+    RouterModule.forRoot(appRoutes),
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    MatGridListModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [HttpClient, ApiContentService],
   exports: [
   ],
   bootstrap: [AppComponent]

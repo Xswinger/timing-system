@@ -1,11 +1,39 @@
 <div class="set-height center-content" style="background-color: deepskyblue">
   <mat-card style="text-align: center">
     <mat-card-title class="center-content">
-      Войти как:
+      Авторизация
     </mat-card-title>
     <mat-card-actions>
-      <button mat-raised-button color="primary" routerLink="/timekeeper" (click)="auth.setLoggedTimekeeper()">Секундант</button>
-      <button mat-raised-button color="warn" routerLink="/judge/settings" (click)="auth.setLoggedJudge()">Главный судья</button>
+      <form [formGroup]="UserData" (ngSubmit)="authorization()">
+        <section>
+          <mat-form-field [formGroup]="UserData">
+            <mat-label>Логин</mat-label>
+            <input matInput formControlName="username">
+            <mat-error>Обязательное поле</mat-error>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [formGroup]="UserData">
+            <mat-label>Пароль</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-error>Обязательное поле</mat-error>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-checkbox [formGroup]="UserData" color="primary" formControlName="is_admin">Главный судья</mat-checkbox>
+        </section>
+        <mat-error *ngIf="wrongRegData">Пользователь уже существует</mat-error>
+        <mat-error *ngIf="wrongAuthData">Неверный логин/пароль</mat-error>
+        <section>
+          <button mat-raised-button color="primary" type="submit" (click)="authorization()">Войти</button>
+        </section>
+<!--        <section style="margin-top: 3%">-->
+<!--          <button mat-raised-button color="warn" type="submit" (click)="registration()">Зарегистрироваться</button>-->
+<!--        </section>-->
+      </form>
+
+<!--      <button mat-raised-button color="primary" routerLink="/timekeeper" (click)="authService.setLoggedTimekeeper()">Секундант</button>-->
+<!--      <button mat-raised-button color="warn" routerLink="/judge/settings" (click)="authService.setLoggedJudge()">Главный судья</button>-->
     </mat-card-actions>
   </mat-card>
 </div>

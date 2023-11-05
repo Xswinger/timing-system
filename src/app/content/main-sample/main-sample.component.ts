@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router'
 
 @Component({
@@ -27,6 +27,14 @@ export class MainSampleComponent implements OnInit {
         this.currentTitle = item.title;
       }
     })
+    this.titleHider();
+  }
+
+  @HostListener('document:keydown.enter')
+  titleHider(): void {
+    if (this.currentTitle === "Табло") {
+      this.hideTitle = !this.hideTitle;
+    }
   }
 
   changeTitle(title: string) {
@@ -34,4 +42,6 @@ export class MainSampleComponent implements OnInit {
   }
 
   currentTitle: string = "";
+
+  hideTitle: boolean = false;
 }

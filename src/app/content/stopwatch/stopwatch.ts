@@ -1,8 +1,7 @@
-export interface HeatResult {
-  id: number,
-  event_id: number,
+export interface Heat {
+  lane: number,
   time: string,
-  lane: number
+  event_id: number
 }
 
 export interface Event {

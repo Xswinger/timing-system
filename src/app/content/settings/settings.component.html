@@ -1,19 +1,75 @@
 <div class="set-height center-content">
   <mat-card style="height: 80vh;">
     <mat-card-title class="center-content">
-      Настройка параметров хронометража
+      Настройка хронометража
     </mat-card-title>
     <mat-card-content>
-      <mat-form-field>
-        <mat-label>Количество дорожек</mat-label>
-        <input matInput type="number">
-      </mat-form-field>
-      <section>
-        <mat-checkbox color="primary">Показывать очки Fina</mat-checkbox>
-      </section>
-      <section>
-        <mat-checkbox>Тёмная тема</mat-checkbox>
-      </section>
+      <div style="overflow: auto; overflow-y: scroll; height: 70vh">
+        <mat-card-subtitle style="margin-top: 3%">
+          Управление заплывами
+        </mat-card-subtitle>
+        <mat-error *ngIf="eventFinishStatus">Больше нет заплывов</mat-error>
+        <mat-grid-list cols="2" rowHeight="1:1">
+          <mat-grid-tile colspan="1">
+            <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="primary" (click)="giveStart()">Дать старт</button>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="warn" (click)="finishHeat()">Закончить<br>заплыв</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-card-subtitle style="margin-top: 5%">
+          Создание заплывов
+        </mat-card-subtitle>
+        <form [formGroup]="CreatedEvent" (ngSubmit)="addEvent()">
+          <section>
+            <mat-form-field [formGroup]="CreatedEvent">
+              <mat-label>Название заплыва</mat-label>
+              <input matInput formControlName="name">
+              <mat-hint>Пример: "1-й заплыв"</mat-hint>
+              <mat-error>Обязательное поле</mat-error>
+            </mat-form-field>
+          </section>
+          <section>
+            <mat-form-field [formGroup]="CreatedEvent">
+              <mat-label>Описание заплыва</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+              <mat-hint>Пример: "Мужчины - 50 метров - Брасс"</mat-hint>
+              <mat-error>Обязательное поле</mat-error>
+            </mat-form-field>
+          </section>
+          <section>
+            <button style="margin-top: 5%" mat-raised-button color="primary" type="submit">Создать</button>
+            <mat-hint style="margin-left: 3%" *ngIf="eventAddedStatus">Заплыв создан</mat-hint>
+          </section>
+        </form>
+        <mat-card-subtitle style="margin-top: 3%">
+          Горячие клавиши (только для Табло)
+        </mat-card-subtitle>
+        <section>
+          <span>Enter - Скрыть/Показать toolbar</span>
+        </section>
+      </div>
+<!--      <mat-card-subtitle style="margin-top: 3%">-->
+<!--        Настройка мероприятия-->
+<!--      </mat-card-subtitle>-->
+<!--      <section>-->
+<!--        <mat-form-field>-->
+<!--          <mat-label>Мероприятие</mat-label>-->
+<!--          <mat-select>-->
+<!--            <mat-option *ngFor="let event of events" [value]="event.id">-->
+<!--              {{event.name}}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--          <mat-error>Обязательное поле</mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </section>-->
+<!--      <section>-->
+<!--        <mat-form-field>-->
+<!--          <mat-label>Количество заплывов</mat-label>-->
+<!--          <input matInput type="number" [(ngModel)]="heatsAmount">-->
+<!--          <mat-error *ngIf="!heatsAmount">Обязательное поле</mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </section>-->
     </mat-card-content>
   </mat-card>
 </div>

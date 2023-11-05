@@ -1,10 +1,10 @@
-<mat-drawer-container [hasBackdrop]="true" autosize style="height: 100%">
+<mat-drawer-container [hasBackdrop]="true" autosize style="height: 100%" [ngClass]="{'set-full-height:hideTitle':hideTitle}">
   <mat-drawer #drawer mode="over">
     <app-menu [menuControl]="drawer" (onChangePage)="changeTitle($event)"></app-menu>
   </mat-drawer>
 
   <mat-drawer-content style="font-size: xx-large">
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" [ngClass]="{hide:hideTitle}">
       <mat-toolbar-row>
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>

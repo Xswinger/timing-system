@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {HeatResult} from './heat-result'
 import {MatTableModule} from '@angular/material/table'
 import {MatCardModule} from '@angular/material/card'
+import {Event} from './heat-result'
+import {ApiContentService} from '../../api.content.service'
+import {FormBuilder} from '@angular/forms'
+import {WebsocketService} from '../websocket.service'
 
 @Component({
   selector: 'app-heat-result',
@@ -15,44 +19,59 @@ import {MatCardModule} from '@angular/material/card'
 })
 export class HeatResultComponent implements OnInit {
 
-  constructor() { }
+  columnsName: string[] = ["lane", "time"];
+
+  results: HeatResult[] = [];
+
+  curEvent: Event = {
+    id: 0,
+    name: 'Обновляется...',
+    description: 'Обновляется...',
+    is_finished: false
+  };
+
+  constructor(private api: ApiContentService) { }
 
   ngOnInit(): void {
+    this.getEvents();
   }
 
-  columnsName: string[] = ["lane", "name", "time", "place", "points"];
+  // @HostListener('document:keydown.enter')
+  // onEnterClick(): void {
+  //   this.getCurrentScoreboard();
+  // }
 
-  resultsExample: HeatResult[] = [
-    {
-      name: "Игорь",
-      time: "31.05",
-      place: 1,
-      points: 12
-    },
-    {
-      name: "Елена",
-      time: "32.05",
-      place: 2,
-      points: 12
-    },
-    {
-      name: "Максим",
-      time: "33.05",
-      place: 3,
-      points: 12
-    },
-    {
-      name: "Григорий",
-      time: "34.05",
-      place: 4,
-      points: 12
-    },
-    {
-      name: "Олег",
-      time: "35.05",
-      place: 5,
-      points: 12
-    },
-  ];
+  getEvents() {
+    this.api.getEvents().subscribe(
+      (data: any) => {
+        console.log(data);
+        for (let event of data) {
+          if (!event.is_finished) {
+            this.curEvent = event;
+            break;
+          }
+        }
+        this.getCurrentScoreboard();
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
+
+  getCurrentScoreboard() {
+    this.api.getScoreboard(this.curEvent.id).subscribe(
+      (data: any) => {
+        console.log(data);
+        let temporary: HeatResult[] = [];
+        for (let times of data) {
+          temporary.push(times[0]);
+        }
+        this.results = temporary;
+        console.log(this.results)
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
 
 }

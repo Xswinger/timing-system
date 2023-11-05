@@ -1,10 +1,11 @@
 <mat-drawer-container [hasBackdrop]="true" autosize style="height: 100%">
   <mat-drawer #drawer mode="over">
     <mat-list role="list">
-      <div mat-subheader>Номер дорожки</div>
+      <div mat-subheader>Настройки</div>
       <mat-list-item>
-        <mat-form-field>
-          <mat-select [(ngModel)]="currentLane">
+        <mat-form-field [formGroup]="HeatData">
+          <mat-label>Номер дорожки</mat-label>
+          <mat-select formControlName="lane">
             <mat-option [value]="1">
               1
             </mat-option>
@@ -23,6 +24,16 @@
           </mat-select>
         </mat-form-field>
       </mat-list-item>
+<!--      <mat-list-item>-->
+<!--        <mat-form-field [formGroup]="HeatData">-->
+<!--          <mat-label>Мероприятие</mat-label>-->
+<!--          <mat-select formControlName="event_id">-->
+<!--            <mat-option *ngFor="let event of events" [value]="event.id">-->
+<!--              {{event.name}}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </mat-list-item>-->
     </mat-list>
   </mat-drawer>
 
@@ -41,13 +52,15 @@
     <div class="set-height center-content">
       <mat-card style="text-align: center">
         <mat-card-title class="center-content">
-          Дорожка № {{currentLane}}
+          Дорожка № {{HeatData.get('lane')?.value}}
         </mat-card-title>
-        <mat-error *ngIf="!currentLane">Укажите номер дорожки</mat-error>
+        <mat-error *ngIf="HeatData.get('lane')?.value == 0 && !eventFinishStatus">Заполните информацию в меню "Настройки"</mat-error>
+        <mat-error *ngIf="eventFinishStatus">Больше нет заплывов</mat-error>
         <mat-card-content>
           <section>
             <div style="font-size: xxx-large; padding: 5vh; margin: 15vh 0 15vh 0">
-              <div>
+              <span *ngIf="waitingStart">Ожидание</span>
+              <div *ngIf="!waitingStart">
                 {{getTimeStringMinutes()}}
                 <span>:</span>
                 {{getTimeStringSeconds()}}
@@ -57,11 +70,10 @@
             </div>
             <mat-grid-list cols="2" rowHeight="1:1">
               <mat-grid-tile colspan="1">
-                <button *ngIf="!stopwatchStart" class="button-size" mat-raised-button (click)="onStart()" color="primary">Старт</button>
-                <button *ngIf="stopwatchStart" class="button-size" mat-raised-button (click)="onPause()" color="primary">Пауза</button>
+                <button [disabled]="HeatData.get('lane')?.value == 0" class="button-size" mat-raised-button (click)="onPause()" color="primary">Пауза</button>
               </mat-grid-tile>
               <mat-grid-tile colspan="1">
-                <button class="button-size" mat-raised-button (click)="onReset()" color="warn">Сбросить</button>
+                <button [disabled]="HeatData.get('lane')?.value == 0" class="button-size" mat-raised-button (click)="onReset()" color="warn">Сбросить</button>
               </mat-grid-tile>
             </mat-grid-list>
           </section>

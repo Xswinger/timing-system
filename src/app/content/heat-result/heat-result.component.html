@@ -1,39 +1,29 @@
-<mat-card style="height: 80vh; overflow-x: scroll">
+<mat-card style="height: 100vh; overflow-x: scroll">
   <mat-card-header>
     <mat-card-title>
-      1-й заплыв
+      {{curEvent.name}}
     </mat-card-title>
     <mat-card-subtitle>
-      50 м - Брасс - Мужчины
+      {{curEvent.description}}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <table mat-table [dataSource]="resultsExample" style="width: 100%">
+    <table mat-table [dataSource]="results" style="width: 100%">
 
       <ng-container matColumnDef="lane">
         <th mat-header-cell *matHeaderCellDef>Дорожка</th>
-        <td mat-cell *matCellDef="let i = index">{{i+1}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Спортсмен</th>
-        <td mat-cell *matCellDef="let result">{{result.name}}</td>
+        <td mat-cell *matCellDef="let result">{{result.lane}}</td>
       </ng-container>
 
       <ng-container matColumnDef="time">
-        <th mat-header-cell *matHeaderCellDef>Результат</th>
-        <td mat-cell *matCellDef="let result">{{result.time}}</td>
+        <th mat-header-cell *matHeaderCellDef style="text-align: center">Результат</th>
+        <td mat-cell *matCellDef="let result" style="text-align: center">{{result.time}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="place">
-        <th mat-header-cell *matHeaderCellDef>Место</th>
-        <td mat-cell *matCellDef="let result">{{result.place}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="points">
-        <th mat-header-cell *matHeaderCellDef>Очки</th>
-        <td mat-cell *matCellDef="let result">{{result.points}}</td>
-      </ng-container>
+<!--      <ng-container matColumnDef="place">-->
+<!--        <th mat-header-cell *matHeaderCellDef>Место</th>-->
+<!--        <td mat-cell *matCellDef="let result">{{result.place}}</td>-->
+<!--      </ng-container>-->
 
       <tr mat-header-row *matHeaderRowDef="columnsName"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsName;"></tr>

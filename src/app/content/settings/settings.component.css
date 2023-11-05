@@ -7,3 +7,8 @@
 .set-height {
   height: 100vh;
 }
+
+.button-size {
+  width: 30vw;
+  height: 20vh;
+}
