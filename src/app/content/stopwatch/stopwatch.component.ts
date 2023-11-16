@@ -106,6 +106,7 @@ export class StopwatchComponent implements OnInit {
       (data: any) => {
         console.log(data);
         this.waitingStart = true;
+        this.getEvents();
       }, error => {
         console.log(error);
       }

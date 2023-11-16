@@ -12,7 +12,7 @@ export class WebsocketService {
   constructor() { }
 
   connect(event_id: number): void {
-    this.socket = new WebSocket(`wss://swimming.admin47.ru/ws/${event_id}`);
+    this.socket = new WebSocket(`wss://swim-timer.ru/api/ws/${event_id}`);
 
     this.socket.onopen = () => {
       console.log('WebSocket connection established.');

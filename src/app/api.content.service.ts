@@ -8,7 +8,7 @@ export class ApiContentService {
 
   constructor(private http: HttpClient) {}
 
-  baseUrl = 'https://swimming.admin47.ru';
+  baseUrl = 'https://swim-timer.ru/api';
 
   createHeader() {
     return {
