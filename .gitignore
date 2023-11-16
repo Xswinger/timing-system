@@ -9,6 +9,7 @@ tsconfig.json
 tsconfig.spec.json
 .browserslistrc
 .editorconfig
+.vscode
 
 # Compiled output
 /dist
