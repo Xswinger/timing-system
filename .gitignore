@@ -8,6 +8,7 @@ tsconfig.app.json
 tsconfig.json
 tsconfig.spec.json
 .browserslistrc
+.editorconfig
 
 # Compiled output
 /dist
