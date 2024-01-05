@@ -4,10 +4,13 @@
 .set-full-height {
   height: 100vh!important;
 }
-/*TODO not working, need to fix*/
-mat-drawer @media screen and (max-width: 500px){
-  min-width: 300px;
+@media screen and (min-width: 500px) {
+  mat-drawer {
+    width: 30vw;
+  }
 }
-mat-drawer @media screen and (min-width: 500px){
-  min-width: 700px;
+@media screen and (max-width: 500px) {
+  mat-drawer {
+    width: 70vw;
+  }
 }

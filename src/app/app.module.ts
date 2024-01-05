@@ -25,7 +25,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http'
-import {ApiContentService} from './api.content.service'
+import {ApiContentService} from './api.content.service';
+import { HeatControlComponent } from './content/heat-control/heat-control.component';
+import { TipsComponent } from './content/tips/tips.component'
 
 const appRoutes: Routes = [
   {path: 'auth', component: AuthorizationComponent},
@@ -37,7 +39,9 @@ const appRoutes: Routes = [
     children: [
       {path: 'scoreboard', component: HeatResultComponent},
       {path: 'settings', component: SettingsComponent},
-      {path: '**', redirectTo: 'settings'}
+      {path: 'control', component: HeatControlComponent},
+      {path: 'tips', component: TipsComponent},
+      {path: '**', redirectTo: 'scoreboard'}
     ]},
   {
     path: 'timekeeper',
@@ -53,7 +57,9 @@ const appRoutes: Routes = [
     AppComponent,
     AuthorizationComponent,
     MainSampleComponent,
-    StopwatchComponent
+    StopwatchComponent,
+    HeatControlComponent,
+    TipsComponent
   ],
   imports: [
     BrowserModule,

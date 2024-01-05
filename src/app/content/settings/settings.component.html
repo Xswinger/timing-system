@@ -1,22 +1,20 @@
 <div class="set-height center-content">
-  <mat-card style="height: 80vh;">
+<!--  <mat-grid-list cols="2">-->
+<!--    <mat-grid-tile colspan="2">-->
+<!--      <mat-card-title class="center-content">-->
+<!--        Настройка хронометража-->
+<!--      </mat-card-title>-->
+<!--      <mat-card-subtitle>-->
+<!--        Управление заплывами-->
+<!--      </mat-card-subtitle>-->
+<!--    </mat-grid-tile>-->
+<!--  </mat-grid-list>-->
+  <mat-card>
     <mat-card-title class="center-content">
       Настройка хронометража
     </mat-card-title>
     <mat-card-content>
-      <div style="overflow: auto; overflow-y: scroll; height: 70vh">
-        <mat-card-subtitle style="margin-top: 3%">
-          Управление заплывами
-        </mat-card-subtitle>
-        <mat-error *ngIf="eventFinishStatus">Больше нет заплывов</mat-error>
-        <mat-grid-list cols="2" rowHeight="1:1">
-          <mat-grid-tile colspan="1">
-            <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="primary" (click)="giveStart()">Дать старт</button>
-          </mat-grid-tile>
-          <mat-grid-tile colspan="1">
-            <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="warn" (click)="finishHeat()">Закончить<br>заплыв</button>
-          </mat-grid-tile>
-        </mat-grid-list>
+      <div>
         <mat-card-subtitle style="margin-top: 5%">
           Создание заплывов
         </mat-card-subtitle>
@@ -42,34 +40,7 @@
             <mat-hint style="margin-left: 3%" *ngIf="eventAddedStatus">Заплыв создан</mat-hint>
           </section>
         </form>
-        <mat-card-subtitle style="margin-top: 3%">
-          Горячие клавиши (только для Табло)
-        </mat-card-subtitle>
-        <section>
-          <span>Enter - Скрыть/Показать toolbar</span>
-        </section>
       </div>
-<!--      <mat-card-subtitle style="margin-top: 3%">-->
-<!--        Настройка мероприятия-->
-<!--      </mat-card-subtitle>-->
-<!--      <section>-->
-<!--        <mat-form-field>-->
-<!--          <mat-label>Мероприятие</mat-label>-->
-<!--          <mat-select>-->
-<!--            <mat-option *ngFor="let event of events" [value]="event.id">-->
-<!--              {{event.name}}-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--          <mat-error>Обязательное поле</mat-error>-->
-<!--        </mat-form-field>-->
-<!--      </section>-->
-<!--      <section>-->
-<!--        <mat-form-field>-->
-<!--          <mat-label>Количество заплывов</mat-label>-->
-<!--          <input matInput type="number" [(ngModel)]="heatsAmount">-->
-<!--          <mat-error *ngIf="!heatsAmount">Обязательное поле</mat-error>-->
-<!--        </mat-form-field>-->
-<!--      </section>-->
     </mat-card-content>
   </mat-card>
 </div>

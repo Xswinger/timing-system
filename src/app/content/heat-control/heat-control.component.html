@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title class="center-content">
+    Управление заплывами
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-error *ngIf="eventFinishStatus">Больше нет заплывов</mat-error>
+      <mat-grid-list cols="2" rowHeight="1:1">
+        <mat-grid-tile colspan="1">
+          <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="primary" (click)="giveStart()">Дать старт</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1">
+          <button [disabled]="eventFinishStatus" class="button-size" mat-raised-button color="warn" (click)="finishHeat()">Закончить<br>заплыв</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-card-content>
+</mat-card>

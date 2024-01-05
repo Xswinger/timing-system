@@ -37,13 +37,21 @@ export class MenuComponent implements OnInit {
   }
 
   menuItems: MenuRoutes[] = [{
+      name: 'Табло',
+      route: 'scoreboard',
+      icon: 'format_list_numbered'
+    }, {
+      name: 'Управление',
+      route: 'control',
+      icon: 'alarm'
+    }, {
       name: 'Настройки',
       route: 'settings',
       icon: 'settings'
     }, {
-      name: 'Табло',
-      route: 'scoreboard',
-      icon: 'format_list_numbered'
-    }
+    name: 'Помощь',
+    route: 'tips',
+    icon: 'help'
+  }
   ]
 }

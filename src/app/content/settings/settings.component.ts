@@ -35,12 +35,9 @@ export class SettingsComponent implements OnInit {
 
   CreatedEvent!: FormGroup;
 
-  events!: Event[];
-
   curEvent!: Event;
 
   eventAddedStatus: boolean = false;
-  eventFinishStatus: boolean = false;
 
   name: string = 'Настройки';
 
@@ -61,7 +58,6 @@ export class SettingsComponent implements OnInit {
       (data: any) => {
         console.log(data);
         this.eventAddedStatus = true;
-        this.eventFinishStatus = false;
         this.getEvents();
       }, error => {
         console.log(error);
@@ -72,37 +68,15 @@ export class SettingsComponent implements OnInit {
   getEvents() {
     this.api.getEvents().subscribe(
       (data: any) => {
-        console.log(data);
-        this.events = data;
         for (let event of data) {
           if (!event.is_finished) {
             this.curEvent = event;
             break;
           }
         }
-        if (this.curEvent === undefined) {
-          this.eventFinishStatus = true;
-        } else {
+        if (this.curEvent !== undefined) {
           this.websocket.connect(this.curEvent.id);
         }
-      }, error => {
-        console.log(error);
-      }
-    )
-  }
-
-  giveStart() {
-    this.websocket.messageReceived.subscribe((message: string) => {
-      console.log("custom " + message);
-    });
-    this.websocket.sendMessage(String(new Date().getTime()));
-  }
-
-  finishHeat() {
-    this.api.finishEvent(this.curEvent.id).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.getEvents();
       }, error => {
         console.log(error);
       }
