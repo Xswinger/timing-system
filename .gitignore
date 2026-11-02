@@ -48,6 +48,11 @@ yarn-error.log
 testem.log
 /typings
 
+# The standalone Express stub keeps its own reproducible dependency manifests.
+backend/node_modules/
+!backend/package.json
+!backend/package-lock.json
+
 # System files
 .DS_Store
 Thumbs.db
